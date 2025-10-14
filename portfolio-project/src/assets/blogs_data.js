@@ -1,18 +1,24 @@
+import blog1_img from '../assets/books.jpg'
+import blog2_img from '../assets/travel.jpg'
+import blog3_img from '../assets/cooking.jpg'
+
+
+
 const Blogs_Data = [
     {
         b_no:"01",
         b_name:"Reading",
-        b_desc: "About the books I have read recently on my leisure times..."
+        b_img: blog1_img
     },
     {
         b_no:"02",
         b_name:"Travelling",
-        b_desc: "About the places I have visited recently on my vacation..."
+        b_img: blog2_img
     },
     {
         b_no:"03",
         b_name:"Cooking",
-        b_desc: "About the food I have tried preparing recently on my leisure times..."
+        b_img: blog3_img
     },
 ]
 
