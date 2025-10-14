@@ -15,3 +15,5 @@ const Blogs_Data = [
         b_desc: "About the food I have tried preparing recently on my leisure times..."
     },
 ]
+
+export default Blogs_Data
