@@ -4,7 +4,7 @@ import hero from '../../assets/hero.png'
 
 const Skills = () => {
   return (
-    <div className='skills'>
+    <div id='skills' className='skills'>
         <div className='skills-title'>
             <h1>Skills</h1>
             <div className='skills-sections'>
