@@ -7,6 +7,7 @@ import EducationAndWork from './components/education&work/EducationAndWork'
 import Projects from './components/projects/Projects'
 import Blogs from './components/blogs/Blogs'
 import Contact from './components/contact/Contact'
+import Footer from './components/footer/Footer'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Projects/>
       <Blogs/>
       <Contact/>
+      <Footer />
     </div>
   )
 }
