@@ -8,9 +8,10 @@ const Footer = () => {
         <div className='footer-content'>
             <p className='footer-left'> 2025 Chirani Rajapaksha. Thanks for stopping by.</p>
             <div className='footer-right'>
-                <p>LinkedIn</p>
-                <p>Facebook</p>
-                <p>Instagram</p>
+                <a href="https://www.linkedin.com/in/chirani-rajapaksha/" target="_blank">LinkedIn</a>
+                <a href="https://web.facebook.com/chirani.rajapaksha.16" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/chiranirajapaksha/" target="_blank">Instagram</a>
+
             </div>
         </div>
     </div>

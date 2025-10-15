@@ -20,3 +20,11 @@
     gap: 50px;
     margin-bottom: 50px;
 }
+.footer-right a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.footer-right a:hover {
+  text-decoration: underline;
+}
