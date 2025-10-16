@@ -58,3 +58,30 @@
     transform: scale(1.05);
     transition: 0.3s;
 }
+@media(max-width:768px){
+    .skills{
+        gap: 80px;
+        margin: 50px 70px;
+        align-items: start;
+    }
+    .skills-title h1{
+        font-size: 50px;
+        padding: 0;
+    }
+    .skills-sections{
+        flex-direction: column;
+    }
+    .skills-left{
+        display: none;
+    }
+    .skills-right{
+        font-size: 18px;
+        line-height: 32px;
+    }
+    .skill p{
+        font-size: 20px;
+    }
+    .skill hr{
+        height: 6px;
+    }
+}
