@@ -12,7 +12,7 @@ const hotelManagement = {
     "Automated billing and invoice generation",
     "Admin dashboard for analytics",
   ],
-  github: "https://github.com/yourusername/hotel-management-system",
+  github: "https://github.com/ChiraniNimaya/HotelBookingSystem",
   demo: "https://yourdemo.com/hotel",
 };
 

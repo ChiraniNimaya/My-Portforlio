@@ -12,7 +12,7 @@ const energyForecasting = {
     "Time-series forecasting using regression models",
     "AWS EMR integration for distributed computation",
   ],
-  github: "https://github.com/yourusername/energy-forecasting-model",
+  github: "https://github.com/ChiraniNimaya/Energy-Consumption-Forecasting",
   demo: "https://yourdemo.com/energy",
 };
 

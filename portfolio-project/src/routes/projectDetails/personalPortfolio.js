@@ -12,7 +12,7 @@ const personalPortfolio = {
     "Smooth scrolling and animations",
     "Project details and contact forms integrated",
   ],
-  github: "https://github.com/yourusername/personal-portfolio",
+  github: "https://github.com/ChiraniNimaya/My-Portforlio",
   demo: "https://yourdemo.com/portfolio",
 };
 
