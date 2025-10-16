@@ -3,8 +3,8 @@ const personalPortfolio = {
   techStack: ["React", "CSS", "JavaScript", "Vite"],
   description: `
     A responsive personal portfolio website built with React to showcase
-    projects, skills, and professional experience. Designed with smooth
-    animations and dynamic sections for a modern aesthetic.
+    projects, skills, education background, professional experience and hobbies. 
+    Designed with smooth animations and dynamic sections for a modern aesthetic.
   `,
   features: [
     "Fully responsive design",
