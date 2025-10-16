@@ -10,6 +10,7 @@ import Blogs from './components/blogs/Blogs'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 import ProjectDetail from './components/projects/ProjectDetail';
+import BlogDetail from './components/blogs/BlogDetail';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           } 
         />
         <Route path="/projects/:projectName" element={<ProjectDetail />} /> 
+        <Route path="/blogs/:b_name" element={<BlogDetail />} />
       </Routes>
     </Router>
   )

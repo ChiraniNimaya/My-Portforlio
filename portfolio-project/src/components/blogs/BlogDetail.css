@@ -1,0 +1,36 @@
+.blog-detail {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 40px;
+  color: #fff;
+  background-color: #1b0020;
+  border-radius: 12px;
+  line-height: 1.8;
+}
+
+.blog-detail h1 {
+  font-size: 40px;
+  background: linear-gradient(267deg, #da7c25 0.36%, #4ca626 102.06%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
+}
+
+.blog-detail h3 {
+  color: #4ca626;
+  margin-top: 25px;
+}
+
+.blog-intro {
+  font-size: 20px;
+  color: #ddd;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+  color: #ccc;
+}
