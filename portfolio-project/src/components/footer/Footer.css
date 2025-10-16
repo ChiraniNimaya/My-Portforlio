@@ -28,3 +28,13 @@
 .footer-right a:hover {
   text-decoration: underline;
 }
+@media(max-width:768px){
+  .footer{
+    margin: 50px 70px;
+  }
+  .footer-content{
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 50px;
+  }
+}
