@@ -1,9 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Projects.css'
 import Projects_Data from '../../assets/projects_data'
 import arrow_icon from '../../assets/arrow_icon.svg'
 
 const Projects = () => {
+  const navigate = useNavigate();                      
+
   return (
     <div id='projects' className='projects'>
         <div className="projects-title">
@@ -11,7 +14,7 @@ const Projects = () => {
         </div>
         <div className="projects-container">
           {Projects_Data.map((project,index)=>{
-            return <div key={index} className='projects-format'>
+            return <div key={index} className='projects-format' onClick={() => navigate(`/projects/${project.p_name.replace(/\s+/g, '-')}`)}>
               <h3>{project.p_no}</h3>
               <h2>{project.p_name}</h2>
               <p>{project.p_desc}</p>

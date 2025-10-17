@@ -7,17 +7,17 @@ import blog3_img from '../assets/cooking.jpg'
 const Blogs_Data = [
     {
         b_no:"01",
-        b_name:"Reading",
+        b_name:"Zahir",
         b_img: blog1_img
     },
     {
         b_no:"02",
-        b_name:"Travelling",
+        b_name:"Wat Arun",
         b_img: blog2_img
     },
     {
         b_no:"03",
-        b_name:"Cooking",
+        b_name:"Mango Sticky Rice",
         b_img: blog3_img
     },
 ]
