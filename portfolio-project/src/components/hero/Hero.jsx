@@ -1,20 +1,126 @@
-import React from 'react'
-import AnchorLink from "react-anchor-link-smooth-scroll";
-
-import './Hero.css'
+import React, { useState, useEffect } from 'react'
+import AnchorLink from "react-anchor-link-smooth-scroll"
+import { Download, ArrowRight } from 'lucide-react'
+import { useInView } from 'react-intersection-observer'
 import hero from '../../assets/hero.png'
 
 const Hero = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  })
+
+  const [typedText, setTypedText] = useState('')
+  const fullText = "Chirani Rajapaksha"
+  
+  // Typing animation effect
+  useEffect(() => {
+    if (inView) {
+      let index = 0
+      const timer = setInterval(() => {
+        if (index <= fullText.length) {
+          setTypedText(fullText.slice(0, index))
+          index++
+        } else {
+          clearInterval(timer)
+        }
+      }, 100)
+      return () => clearInterval(timer)
+    }
+  }, [inView])
+
+  const handleResumeDownload = () => {
+    // Create a link element
+    const link = document.createElement('a')
+    // Set the href to your CV file path (adjust the path to where your CV is stored)
+    link.href = '/assets/Chirani_Rajapaksha.pdf'
+    // Set the download attribute with the desired filename
+    link.download = 'Chirani_Rajapaksha_CV.pdf'
+    // Append to body, click, and remove
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
-    <div id='home' className='hero'>
-      <h1>Hello... I am Chirani Rajapaksha</h1>
-      <img src={hero} alt='hero'/>
-      <p>I am a fullstack developer from Galle, Sri Lanka with more than 2 years of experience in the Software Development industry.</p>
-      <div className='hero-action'>
-          <div className='hero-connect'><AnchorLink className='anchor-link' offset={50} href='#contact'>Connect with me</AnchorLink></div>
-          <div className='hero-resume'>My resume</div>
+    <section 
+      id="home" 
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center section-padding pt-32 overflow-hidden"
+    >
+      {/* Animated gradient orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+
+      <div className={`relative z-10 w-full max-w-5xl mx-auto text-center transition-all duration-1000 ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+        {/* Profile Image */}
+        <div className="relative inline-block mb-8 group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse" />
+          <img 
+            src={hero} 
+            alt="Chirani Rajapaksha" 
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-dark-800 shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        {/* Greeting */}
+        <p className="text-lg md:text-xl text-dark-300 font-medium mb-4 animate-fade-in">
+          👋 Hello, I'm
+        </p>
+
+        {/* Name with Typing Effect */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-display">
+          <span className="gradient-text">
+            {typedText}
+            <span className="animate-pulse">|</span>
+          </span>
+        </h1>
+
+        {/* Role/Description */}
+        <p className="text-lg md:text-xl lg:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed mb-10 animate-slide-up">
+          A passionate <span className="text-primary-400 font-semibold">Fullstack Developer</span> from Galle, Sri Lanka with{' '}
+          <span className="text-primary-400 font-semibold">2+ years</span> of experience crafting exceptional digital experiences
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <AnchorLink 
+            href="#contact" 
+            offset={80}
+            className="group relative px-8 py-4 text-base font-semibold text-white overflow-hidden rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/50"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600" />
+            <span className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="relative z-10 flex items-center gap-2">
+              Connect with me
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </AnchorLink>
+
+          <button 
+            onClick={handleResumeDownload}
+            className="group px-8 py-4 text-base font-semibold text-dark-50 border-2 border-primary-500 rounded-full transition-all duration-300 hover:bg-primary-500/10 hover:scale-105 hover:shadow-lg hover:shadow-primary-500/30"
+          >
+            <span className="flex items-center gap-2">
+              <Download className="w-5 h-5 transition-transform group-hover:translate-y-0.5" />
+              My Resume
+            </span>
+          </button>
+        </div>
+
+        {/* Scroll Indicator with Swipe Text */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+          <div className="w-6 h-10 rounded-full border-2 border-primary-500 flex items-start justify-center p-2 animate-bounce">
+            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+          </div>
+          <p className="text-primary-400 text-sm font-medium animate-pulse">
+            Swipe Down
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
