@@ -7,7 +7,6 @@ const ProjectDetail = () => {
   const { projectName } = useParams();
   const navigate = useNavigate();
 
-  // find project by normalized name
   const project = Projects_Data.find(
     (p) => p.p_name.replace(/\s+/g, "-") === projectName
   );

@@ -10,15 +10,11 @@
     position: relative;
 }
 .skills-title h1{
-    padding: 0px 30px;
+    padding: 20px 30px;
     font-size: 80px;
     font-weight: 600;
 }
-.skills-sections{
-    display: flex;
-    gap: 80px;
-}
-.skills-right{
+.skills-content{
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -68,13 +64,8 @@
         font-size: 50px;
         padding: 0;
     }
-    .skills-sections{
+    .skills-content{
         flex-direction: column;
-    }
-    .skills-left{
-        display: none;
-    }
-    .skills-right{
         font-size: 18px;
         line-height: 32px;
     }

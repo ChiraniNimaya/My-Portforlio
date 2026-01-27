@@ -81,7 +81,7 @@
   }
 
   .educationAndWork-sections {
-    flex-direction: column;   /* stack Education first, then Work */
+    flex-direction: column;   
     gap: 40px;
   }
 
