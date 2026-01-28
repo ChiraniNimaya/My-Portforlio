@@ -29,24 +29,31 @@ const Hero = () => {
     }
   }, [inView])
 
-  const handleResumeDownload = () => {
-    // Create a link element
-    const link = document.createElement('a')
-    // Set the href to your CV file path (adjust the path to where your CV is stored)
-    link.href = '/assets/Chirani_Rajapaksha.pdf'
-    // Set the download attribute with the desired filename
-    link.download = 'Chirani_Rajapaksha_CV.pdf'
-    // Append to body, click, and remove
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+  // Handle CV download - FIXED METHOD
+  const handleResumeDownload = async () => {
+    try {
+      const response = await fetch('/assets/test.pdf')
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'Chirani_Rajapaksha_CV.pdf'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Error downloading CV:', error)
+      // Fallback: Open in new tab if download fails
+      window.open('/assets/Chirani_Rajapaksha.pdf', '_blank')
+    }
   }
 
   return (
     <section 
       id="home" 
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center section-padding pt-32 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center section-padding pt-32 pb-32 overflow-hidden"
     >
       {/* Animated gradient orbs */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-pulse" />
@@ -85,7 +92,7 @@ const Hero = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <AnchorLink 
             href="#contact" 
             offset={80}
@@ -110,8 +117,8 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* Scroll Indicator with Swipe Text */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+        {/* Scroll Indicator with Swipe Text - FIXED POSITION */}
+        <div className="flex flex-col items-center gap-2 mt-8">
           <div className="w-6 h-10 rounded-full border-2 border-primary-500 flex items-start justify-center p-2 animate-bounce">
             <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
           </div>

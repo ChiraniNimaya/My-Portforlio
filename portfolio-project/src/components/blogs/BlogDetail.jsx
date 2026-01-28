@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { blogsData } from '../../data/blogsData'
@@ -6,6 +6,11 @@ import { blogsData } from '../../data/blogsData'
 const BlogDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Find the blog by slug
   const blog = blogsData.find((b) => b.slug === slug)
@@ -29,9 +34,11 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-dark-950">
+    <div className="min-h-screen bg-dark-950 relative">
+      {/* REMOVED: Background overlays that were hiding content */}
+      
       {/* Header with Back Button */}
-      <div className="bg-dark-900 border-b border-dark-800">
+      <div className="relative z-50 bg-dark-900 border-b border-dark-800">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <button
             onClick={() => navigate('/')}
@@ -44,7 +51,7 @@ const BlogDetail = () => {
       </div>
 
       {/* Blog Header */}
-      <div className="relative">
+      <div className="relative z-40">
         {/* Hero Image */}
         <div className="relative h-96 overflow-hidden">
           <img
@@ -56,7 +63,7 @@ const BlogDetail = () => {
         </div>
 
         {/* Title Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8">
+        <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
           <div className="max-w-4xl mx-auto">
             {/* Category Badge */}
             <div className="inline-block px-4 py-1.5 bg-primary-500 text-white text-sm font-semibold rounded-full mb-4">
@@ -83,11 +90,11 @@ const BlogDetail = () => {
         </div>
       </div>
 
-      {/* Blog Content */}
-      <article className="max-w-4xl mx-auto px-6 py-12">
+      {/* Blog Content - FIXED: Added z-50 to ensure content is above any background elements */}
+      <article className="relative z-50 max-w-4xl mx-auto px-6 py-12">
         <div className="prose prose-invert prose-lg max-w-none">
           {blog.content.map((paragraph, index) => (
-            <p key={index} className="text-dark-200 text-lg leading-relaxed mb-6">
+            <p key={index} className="text-white text-lg leading-relaxed mb-6 selection:bg-primary-500 selection:text-white">
               {paragraph}
             </p>
           ))}

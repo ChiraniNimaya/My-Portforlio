@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Github, ExternalLink, Check } from 'lucide-react'
 import { projectsData } from '../../data/projectsData'
@@ -6,6 +6,11 @@ import { projectsData } from '../../data/projectsData'
 const ProjectDetail = () => {
   const { projectName } = useParams()
   const navigate = useNavigate()
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Find the project by slug
   const project = projectsData.find(
@@ -33,9 +38,11 @@ const ProjectDetail = () => {
   const details = project.details
 
   return (
-    <div className="min-h-screen bg-dark-950">
+    <div className="min-h-screen bg-dark-950 relative">
+      {/* REMOVED: Background overlays that were hiding content */}
+      
       {/* Header with Back Button */}
-      <div className="bg-dark-900 border-b border-dark-800">
+      <div className="relative z-50 bg-dark-900 border-b border-dark-800">
         <div className="max-w-5xl mx-auto px-6 py-6">
           <button
             onClick={() => navigate('/')}
@@ -47,8 +54,8 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Project Content */}
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      {/* Project Content - FIXED: Added z-50 to ensure content is above any background elements */}
+      <div className="relative z-50 max-w-5xl mx-auto px-6 py-12">
         {/* Project Header */}
         <div className="mb-12">
           {/* Project Number */}
@@ -56,31 +63,33 @@ const ProjectDetail = () => {
             {project.p_no}
           </div>
 
-          {/* Project Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
-            {details.title}
+          {/* Project Title - FIXED: Ensured text is visible */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+            <span className="bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent">
+              {details.title}
+            </span>
           </h1>
 
           {/* Project Description */}
-          <p className="text-dark-200 text-xl leading-relaxed mb-8">
+          <p className="text-white text-xl leading-relaxed mb-8">
             {details.description}
           </p>
 
-          {/* Project Links */}
+          {/* Project Links - FIXED: Always visible */}
           <div className="flex flex-wrap gap-4">
-            {/* GitHub Link - Always show */}
+            {/* GitHub Link */}
             <a
               href={details.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
+              className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
             >
               <Github className="w-5 h-5" />
               View on GitHub
-              <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <ExternalLink className="w-4 h-4" />
             </a>
             
-            {/* Demo Link - Only show if it exists and is not null */}
+            {/* Demo Link - Only show if it exists */}
             {details.demo && (
               <a
                 href={details.demo}
@@ -129,7 +138,7 @@ const ProjectDetail = () => {
                       <Check className="w-3 h-3 text-primary-400" />
                     </div>
                   </div>
-                  <span className="text-dark-200 leading-relaxed group-hover:text-white transition-colors">
+                  <span className="text-white leading-relaxed">
                     {feature}
                   </span>
                 </li>

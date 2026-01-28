@@ -21,20 +21,24 @@ const App = () => {
   return (
     <Router>  
       <div className="min-h-screen bg-dark-950 text-dark-50 overflow-x-hidden">
-        {/* Background gradient overlay */}
-        <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950 pointer-events-none" />
+        {/* REMOVED: Background overlays that were causing content to be hidden on detail pages */}
+        {/* The gradient and particles were blocking content with pointer-events-none */}
         
-        {/* Animated background particles (optional) */}
-        <div className="fixed inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-
         <Routes>
+          {/* Home page with background effects */}
           <Route 
             path="/" 
             element={
               <>
+                {/* Background gradient overlay - ONLY ON HOME PAGE */}
+                <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950 pointer-events-none -z-10" />
+                
+                {/* Animated background particles - ONLY ON HOME PAGE */}
+                <div className="fixed inset-0 opacity-20 pointer-events-none -z-10">
+                  <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl animate-float" />
+                  <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                </div>
+                
                 <Navbar />
                 <main className="relative z-10">
                   <Hero />
@@ -49,6 +53,7 @@ const App = () => {
               </>
             } 
           />
+          {/* Detail pages WITHOUT background overlays */}
           <Route path="/projects/:projectName" element={<ProjectDetail />} /> 
           <Route path="/blogs/:slug" element={<BlogDetail />} />
         </Routes>
