@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/hero/Hero'
 import About from './components/about/About'
@@ -12,6 +12,21 @@ import Footer from './components/footer/Footer'
 import ProjectDetail from './components/projects/ProjectDetail'
 import BlogDetail from './components/blogs/BlogDetail'
 
+// ScrollRestoration component to handle scroll position
+const ScrollRestoration = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    // Only scroll to top for detail pages (not the home page)
+    if (location.pathname.startsWith('/projects/') || location.pathname.startsWith('/blogs/')) {
+      window.scrollTo(0, 0)
+    }
+    // For home page ('/'), let browser restore previous scroll position naturally
+  }, [location.pathname])
+
+  return null
+}
+
 const App = () => {
   // Add smooth scroll behavior
   useEffect(() => {
@@ -19,11 +34,9 @@ const App = () => {
   }, [])
 
   return (
-    <Router>  
+    <Router>
+      <ScrollRestoration />
       <div className="min-h-screen bg-dark-950 text-dark-50 overflow-x-hidden">
-        {/* REMOVED: Background overlays that were causing content to be hidden on detail pages */}
-        {/* The gradient and particles were blocking content with pointer-events-none */}
-        
         <Routes>
           {/* Home page with background effects */}
           <Route 

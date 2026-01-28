@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Github, ExternalLink, Check } from 'lucide-react'
 import { projectsData } from '../../data/projectsData'
@@ -6,11 +6,6 @@ import { projectsData } from '../../data/projectsData'
 const ProjectDetail = () => {
   const { projectName } = useParams()
   const navigate = useNavigate()
-
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   // Find the project by slug
   const project = projectsData.find(
@@ -37,15 +32,25 @@ const ProjectDetail = () => {
 
   const details = project.details
 
+  // Handle navigation to home page
+  const handleBackToHome = () => {
+    navigate('/')
+    // Scroll to top when going to home via top button
+    setTimeout(() => window.scrollTo(0, 0), 0)
+  }
+
+  // Handle back navigation (preserves scroll position)
+  const handleBack = () => {
+    navigate(-1) // Go back in history, browser will restore scroll position
+  }
+
   return (
     <div className="min-h-screen bg-dark-950 relative">
-      {/* REMOVED: Background overlays that were hiding content */}
-      
       {/* Header with Back Button */}
       <div className="relative z-50 bg-dark-900 border-b border-dark-800">
         <div className="max-w-5xl mx-auto px-6 py-6">
           <button
-            onClick={() => navigate('/')}
+            onClick={handleBackToHome}
             className="group flex items-center gap-2 text-dark-300 hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
@@ -54,7 +59,7 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Project Content - FIXED: Added z-50 to ensure content is above any background elements */}
+      {/* Project Content */}
       <div className="relative z-50 max-w-5xl mx-auto px-6 py-12">
         {/* Project Header */}
         <div className="mb-12">
@@ -63,7 +68,7 @@ const ProjectDetail = () => {
             {project.p_no}
           </div>
 
-          {/* Project Title - FIXED: Ensured text is visible */}
+          {/* Project Title */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
             <span className="bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent">
               {details.title}
@@ -75,7 +80,7 @@ const ProjectDetail = () => {
             {details.description}
           </p>
 
-          {/* Project Links - FIXED: Always visible */}
+          {/* Project Links */}
           <div className="flex flex-wrap gap-4">
             {/* GitHub Link */}
             <a
@@ -89,7 +94,7 @@ const ProjectDetail = () => {
               <ExternalLink className="w-4 h-4" />
             </a>
             
-            {/* Demo Link - Only show if it exists */}
+            {/* Demo Link */}
             {details.demo && (
               <a
                 href={details.demo}
@@ -173,14 +178,14 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom Back Button - FIXED: Now says "Back" and preserves scroll */}
         <div className="mt-12 text-center">
           <button
-            onClick={() => navigate('/')}
+            onClick={handleBack}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to All Projects
+            Back
           </button>
         </div>
       </div>

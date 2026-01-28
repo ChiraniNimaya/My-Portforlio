@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { blogsData } from '../../data/blogsData'
@@ -6,11 +6,6 @@ import { blogsData } from '../../data/blogsData'
 const BlogDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
-
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   // Find the blog by slug
   const blog = blogsData.find((b) => b.slug === slug)
@@ -33,15 +28,25 @@ const BlogDetail = () => {
     )
   }
 
+  // Handle navigation to home page
+  const handleBackToHome = () => {
+    navigate('/')
+    // Scroll to top when going to home via top button
+    setTimeout(() => window.scrollTo(0, 0), 0)
+  }
+
+  // Handle back navigation (preserves scroll position)
+  const handleBack = () => {
+    navigate(-1) // Go back in history, browser will restore scroll position
+  }
+
   return (
     <div className="min-h-screen bg-dark-950 relative">
-      {/* REMOVED: Background overlays that were hiding content */}
-      
       {/* Header with Back Button */}
       <div className="relative z-50 bg-dark-900 border-b border-dark-800">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <button
-            onClick={() => navigate('/')}
+            onClick={handleBackToHome}
             className="group flex items-center gap-2 text-dark-300 hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
@@ -90,7 +95,7 @@ const BlogDetail = () => {
         </div>
       </div>
 
-      {/* Blog Content - FIXED: Added z-50 to ensure content is above any background elements */}
+      {/* Blog Content */}
       <article className="relative z-50 max-w-4xl mx-auto px-6 py-12">
         <div className="prose prose-invert prose-lg max-w-none">
           {blog.content.map((paragraph, index) => (
@@ -103,14 +108,14 @@ const BlogDetail = () => {
         {/* Divider */}
         <div className="my-12 border-t border-dark-800" />
 
-        {/* Back Button at Bottom */}
+        {/* Bottom Back Button - FIXED: Now says "Back" and preserves scroll */}
         <div className="text-center">
           <button
-            onClick={() => navigate('/')}
+            onClick={handleBack}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to Home
+            Back
           </button>
         </div>
       </article>
