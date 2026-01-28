@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/My-Portforlio',
+  base: '/',
+  //base: '/My-Portforlio/',
   plugins: [
     react(),
     tailwindcss(),
