@@ -29,48 +29,14 @@ const Hero = () => {
     }
   }, [inView])
 
-  // Handle CV download - FIXED: Using XMLHttpRequest with ArrayBuffer for binary data
   const handleResumeDownload = () => {
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', '/assets/test.pdf', true)
-    xhr.responseType = 'arraybuffer' // Important: Get binary data, not text
-    
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        // Create blob from ArrayBuffer with explicit PDF MIME type
-        const blob = new Blob([xhr.response], { type: 'application/pdf' })
-        
-        // Create download URL
-        const url = window.URL.createObjectURL(blob)
-        
-        // Create and trigger download link
-        const link = document.createElement('a')
-        link.href = url
-        link.download = 'test_CV.pdf'
-        
-        // Append, click, and cleanup
-        document.body.appendChild(link)
-        link.click()
-        
-        // Cleanup
-        setTimeout(() => {
-          document.body.removeChild(link)
-          window.URL.revokeObjectURL(url)
-        }, 100)
-      } else {
-        console.error('Failed to download PDF:', xhr.status)
-        // Fallback: Open in new tab
-        window.open('/assets/test.pdf', '_blank')
-      }
-    }
-    
-    xhr.onerror = function() {
-      console.error('Network error while downloading PDF')
-      // Fallback: Open in new tab
-      window.open('/assets/test.pdf', '_blank')
-    }
-    
-    xhr.send()
+    const link = document.createElement('a')
+    link.href = 'https://drive.google.com/uc?export=download&id=1f4MNoNqlfrORVP-a0ghV4o-_cz-7Rkvq'
+    link.download = 'Chirani_Rajapaksha_CV.pdf'
+    link.target = '_blank'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
