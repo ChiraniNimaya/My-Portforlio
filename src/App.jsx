@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/hero/Hero'
 import About from './components/about/About'
@@ -30,7 +30,7 @@ const App = () => {
   }, [])
 
   return (
-    <Router>
+    <>
       <ScrollRestoration />
       <div className="min-h-screen bg-dark-950 text-dark-50 overflow-x-hidden">
         <Routes>
@@ -63,7 +63,7 @@ const App = () => {
           <Route path="/blogs/:slug" element={<BlogDetail />} />
         </Routes>
       </div>
-    </Router>
+    </>
   )
 }
 
