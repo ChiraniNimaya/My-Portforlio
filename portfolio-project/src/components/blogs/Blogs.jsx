@@ -18,7 +18,6 @@ const Blogs = () => {
       className="relative section-padding bg-gradient-to-b from-dark-900 to-dark-950"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -31,7 +30,6 @@ const Blogs = () => {
           </p>
         </div>
 
-        {/* Blogs Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogsData.map((blog, index) => (
             <div
@@ -42,7 +40,6 @@ const Blogs = () => {
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => navigate(`/blogs/${blog.slug}`)}
             >
-              {/* Blog Image */}
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={blog.image} 
@@ -51,12 +48,10 @@ const Blogs = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 to-transparent" />
                 
-                {/* Category Badge */}
                 <div className="absolute top-4 left-4 px-3 py-1 bg-primary-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                   {blog.category}
                 </div>
 
-                {/* Featured Badge */}
                 {blog.featured && (
                   <div className="absolute top-4 right-4 px-3 py-1 bg-dark-900/90 backdrop-blur-sm border border-primary-500 text-primary-400 text-xs font-semibold rounded-full">
                     Featured
@@ -64,7 +59,6 @@ const Blogs = () => {
                 )}
               </div>
 
-              {/* Blog Info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-primary-400 transition-colors">
                   {blog.title}
@@ -74,7 +68,6 @@ const Blogs = () => {
                   {blog.excerpt}
                 </p>
 
-                {/* Meta Info */}
                 <div className="flex items-center gap-4 mb-4 text-dark-400 text-xs">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5" />
@@ -86,7 +79,6 @@ const Blogs = () => {
                   </div>
                 </div>
 
-                {/* Read More */}
                 <div className="flex items-center gap-2 text-primary-400 font-medium text-sm group-hover:gap-3 transition-all">
                   Read More
                   <ArrowRight className="w-4 h-4" />

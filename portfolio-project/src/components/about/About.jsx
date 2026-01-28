@@ -1,7 +1,6 @@
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Code2, Rocket, Heart, Award } from 'lucide-react'
-import hero from '../../assets/hero.png'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -33,41 +32,32 @@ const About = () => {
   ]
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={ref}
       className="relative section-padding bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${
-          inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4">
             About <span className="gradient-text">Me</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Image */}
-          <div className={`transition-all duration-1000 delay-200 ${
-            inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl blur-2xl opacity-25 group-hover:opacity-50 transition duration-500" />
-              <img 
-                src={hero} 
-                alt="Profile" 
-                className="relative w-full max-w-md mx-auto rounded-2xl shadow-2xl border border-dark-800 transform group-hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-          </div>
-
-          {/* Right: Content */}
-          <div className={`space-y-6 transition-all duration-1000 delay-300 ${
-            inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
+        {/* Content Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          {/* Left: Text Content */}
+          <div
+            className={`space-y-6 transition-all duration-1000 delay-200 ${
+              inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
             <div className="space-y-4 text-dark-200 text-lg leading-relaxed">
               <p>
                 I am a <span className="text-primary-400 font-semibold">fullstack developer</span> from Galle, Sri Lanka with more than{' '}
@@ -82,11 +72,17 @@ const About = () => {
                 <span className="text-primary-400 font-semibold">enthusiasm and dedication</span> I bring to each project.
               </p>
             </div>
+          </div>
 
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
+          {/* Right: Highlights Grid */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${
+              inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}
+          >
+            <div className="grid grid-cols-2 gap-4">
               {highlights.map((item, index) => (
-                <div 
+                <div
                   key={index}
                   className="group p-4 rounded-xl bg-dark-800/50 border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20 hover:scale-105"
                 >

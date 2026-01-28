@@ -7,10 +7,8 @@ const BlogDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
 
-  // Find the blog by slug
   const blog = blogsData.find((b) => b.slug === slug)
 
-  // If blog not found
   if (!blog) {
     return (
       <div className="min-h-screen bg-dark-950 flex items-center justify-center">
@@ -28,16 +26,13 @@ const BlogDetail = () => {
     )
   }
 
-  // Handle navigation to home page
   const handleBackToHome = () => {
     navigate('/')
-    // Scroll to top when going to home via top button
     setTimeout(() => window.scrollTo(0, 0), 0)
   }
 
-  // Handle back navigation (preserves scroll position)
   const handleBack = () => {
-    navigate(-1) // Go back in history, browser will restore scroll position
+    navigate(-1)
   }
 
   return (
@@ -75,12 +70,10 @@ const BlogDetail = () => {
               {blog.category}
             </div>
 
-            {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {blog.title}
             </h1>
 
-            {/* Meta Info */}
             <div className="flex items-center gap-6 text-dark-200">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -105,17 +98,15 @@ const BlogDetail = () => {
           ))}
         </div>
 
-        {/* Divider */}
         <div className="my-12 border-t border-dark-800" />
 
-        {/* Bottom Back Button - FIXED: Now says "Back" and preserves scroll */}
         <div className="text-center">
           <button
             onClick={handleBack}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back
+            Back to Blogs
           </button>
         </div>
       </article>

@@ -9,7 +9,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const menuRef = useRef()
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -42,16 +41,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 xl:px-20">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+
           <AnchorLink href="#home" className="flex-shrink-0">
             <img 
               src={logo} 
               alt="Logo" 
-              className="h-12 w-auto transition-transform hover:scale-105"
+              className="h-22 w-auto transition-transform hover:scale-105"
             />
           </AnchorLink>
 
-          {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <li key={item.id}>
@@ -76,7 +74,6 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* CTA Button - Desktop */}
           <div className="hidden lg:block">
             <AnchorLink 
               href="#contact" 
@@ -89,7 +86,6 @@ const Navbar = () => {
             </AnchorLink>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 text-dark-200 hover:text-dark-50 transition-colors"
@@ -100,7 +96,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       <div
         ref={menuRef}
         className={`lg:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 bg-dark-900/95 backdrop-blur-xl border-l border-dark-800 shadow-2xl transform transition-transform duration-300 ${
@@ -137,7 +132,6 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Mobile Overlay */}
       {isMenuOpen && (
         <div 
           className="lg:hidden fixed inset-0 top-20 bg-black/60 backdrop-blur-sm"

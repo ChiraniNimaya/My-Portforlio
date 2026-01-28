@@ -7,12 +7,10 @@ const ProjectDetail = () => {
   const { projectName } = useParams()
   const navigate = useNavigate()
 
-  // Find the project by slug
   const project = projectsData.find(
     (p) => p.slug === projectName
   )
 
-  // If project not found
   if (!project) {
     return (
       <div className="min-h-screen bg-dark-950 flex items-center justify-center">
@@ -32,21 +30,17 @@ const ProjectDetail = () => {
 
   const details = project.details
 
-  // Handle navigation to home page
   const handleBackToHome = () => {
     navigate('/')
-    // Scroll to top when going to home via top button
     setTimeout(() => window.scrollTo(0, 0), 0)
   }
 
-  // Handle back navigation (preserves scroll position)
   const handleBack = () => {
-    navigate(-1) // Go back in history, browser will restore scroll position
+    navigate(-1) 
   }
 
   return (
     <div className="min-h-screen bg-dark-950 relative">
-      {/* Header with Back Button */}
       <div className="relative z-50 bg-dark-900 border-b border-dark-800">
         <div className="max-w-5xl mx-auto px-6 py-6">
           <button
@@ -59,30 +53,23 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Project Content */}
       <div className="relative z-50 max-w-5xl mx-auto px-6 py-12">
-        {/* Project Header */}
         <div className="mb-12">
-          {/* Project Number */}
           <div className="text-8xl font-bold text-primary-500/20 mb-4">
             {project.p_no}
           </div>
 
-          {/* Project Title */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
             <span className="bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent">
               {details.title}
             </span>
           </h1>
 
-          {/* Project Description */}
           <p className="text-white text-xl leading-relaxed mb-8">
             {details.description}
           </p>
 
-          {/* Project Links */}
           <div className="flex flex-wrap gap-4">
-            {/* GitHub Link */}
             <a
               href={details.github}
               target="_blank"
@@ -94,7 +81,6 @@ const ProjectDetail = () => {
               <ExternalLink className="w-4 h-4" />
             </a>
             
-            {/* Demo Link */}
             {details.demo && (
               <a
                 href={details.demo}
@@ -109,9 +95,7 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project Details Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Tech Stack */}
           <div className="glass-effect rounded-2xl p-8 border border-dark-700">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-8 bg-gradient-to-b from-primary-500 to-primary-600 rounded-full" />
@@ -129,7 +113,6 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          {/* Key Features */}
           <div className="glass-effect rounded-2xl p-8 border border-dark-700 md:row-span-2">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-8 bg-gradient-to-b from-primary-500 to-primary-600 rounded-full" />
@@ -151,7 +134,6 @@ const ProjectDetail = () => {
             </ul>
           </div>
 
-          {/* Project Stats */}
           <div className="glass-effect rounded-2xl p-8 border border-dark-700">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-8 bg-gradient-to-b from-primary-500 to-primary-600 rounded-full" />
@@ -178,14 +160,13 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Bottom Back Button - FIXED: Now says "Back" and preserves scroll */}
         <div className="mt-12 text-center">
           <button
             onClick={handleBack}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back
+            Back to Projects
           </button>
         </div>
       </div>

@@ -72,14 +72,12 @@ const Contact = () => {
 
     const { name, email, message } = formData
 
-    // Basic validation
     if (!name.trim() || !email.trim() || !message.trim()) {
       setSubmitStatus({ type: 'error', message: 'Please fill in all fields' })
       setIsSubmitting(false)
       return
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       setSubmitStatus({ type: 'error', message: 'Please enter a valid email' })
@@ -119,7 +117,6 @@ const Contact = () => {
       className="relative section-padding bg-gradient-to-b from-dark-900 to-dark-950"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -133,7 +130,6 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Left: Contact Info */}
           <div className={`lg:col-span-2 space-y-8 transition-all duration-1000 delay-200 ${
             inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
@@ -164,7 +160,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Links with Proper Icons */}
             <div className="pt-4">
               <p className="text-dark-400 text-sm mb-3">Follow me on</p>
               <div className="flex gap-3">
@@ -184,7 +179,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right: Contact Form */}
           <div className={`lg:col-span-3 transition-all duration-1000 delay-300 ${
             inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
@@ -229,12 +223,11 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  placeholder="Tell me about your project..."
+                  placeholder=" Enter your message here..."
                   className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-dark-400 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all resize-none"
                 />
               </div>
 
-              {/* Status Message */}
               {submitStatus && (
                 <div className={`p-4 rounded-lg flex items-center gap-2 ${
                   submitStatus.type === 'success' 

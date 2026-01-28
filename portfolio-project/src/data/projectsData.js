@@ -68,9 +68,7 @@ export const projectsData = [
   }
 ]
 
-// Helper function to add new projects easily
 export const addProject = (newProject) => {
-  // Validation
   const requiredFields = ['p_name', 'p_desc', 'details']
   const missingFields = requiredFields.filter(field => !newProject[field])
   
@@ -79,7 +77,6 @@ export const addProject = (newProject) => {
     return false
   }
 
-  // Add default values
   const project = {
     featured: false,
     tags: [],

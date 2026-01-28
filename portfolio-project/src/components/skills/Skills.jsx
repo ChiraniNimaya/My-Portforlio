@@ -51,7 +51,6 @@ const Skills = () => {
       className="relative section-padding bg-gradient-to-b from-dark-950 to-dark-900"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -64,7 +63,6 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Skills Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <div

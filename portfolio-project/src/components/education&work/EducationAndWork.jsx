@@ -60,7 +60,6 @@ const EducationAndWork = () => {
       className="relative section-padding bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -73,14 +72,11 @@ const EducationAndWork = () => {
           </p>
         </div>
 
-        {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Education Section */}
           <div className={`transition-all duration-1000 delay-200 ${
             inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
             <div className="glass-effect rounded-2xl p-8 h-full border-2 border-primary-500/20 hover:border-primary-500/40 transition-all">
-              {/* Section Title */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="p-3 bg-primary-500/10 rounded-lg">
                   <GraduationCap className="w-8 h-8 text-primary-400" />
@@ -88,23 +84,19 @@ const EducationAndWork = () => {
                 <h3 className="text-3xl font-bold text-white">Education</h3>
               </div>
 
-              {/* Education Items */}
               <div className="space-y-6">
                 {education.map((item, index) => (
                   <div 
                     key={index}
                     className="relative pl-6 pb-6 border-l-2 border-primary-500/30 last:pb-0 group"
                   >
-                    {/* Timeline Dot */}
                     <div className="absolute -left-[9px] top-0 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-900 group-hover:scale-125 transition-transform" />
                     
-                    {/* Year Badge */}
                     <div className="inline-block px-3 py-1 bg-primary-500/20 text-primary-400 text-sm font-semibold rounded-full mb-2">
                       <Calendar className="w-3 h-3 inline mr-1" />
                       {item.year}
                     </div>
 
-                    {/* Institution */}
                     <a 
                       href={item.url}
                       target="_blank"
@@ -115,10 +107,8 @@ const EducationAndWork = () => {
                       <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                     </a>
 
-                    {/* Degree */}
                     <p className="text-dark-200 font-medium mb-1">{item.degree}</p>
 
-                    {/* Additional Details */}
                     {item.details.map((detail, idx) => (
                       <p key={idx} className="text-dark-400 text-sm">{detail}</p>
                     ))}
@@ -128,12 +118,10 @@ const EducationAndWork = () => {
             </div>
           </div>
 
-          {/* Work Experience Section */}
           <div className={`transition-all duration-1000 delay-300 ${
             inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
             <div className="glass-effect rounded-2xl p-8 h-full border-2 border-primary-500/20 hover:border-primary-500/40 transition-all">
-              {/* Section Title */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="p-3 bg-primary-500/10 rounded-lg">
                   <Briefcase className="w-8 h-8 text-primary-400" />
@@ -141,29 +129,23 @@ const EducationAndWork = () => {
                 <h3 className="text-3xl font-bold text-white">Work Experience</h3>
               </div>
 
-              {/* Work Items */}
               <div className="space-y-6">
                 {work.map((item, index) => (
                   <div 
                     key={index}
                     className="relative pl-6 pb-6 border-l-2 border-primary-500/30 last:pb-0 group"
                   >
-                    {/* Timeline Dot */}
                     <div className="absolute -left-[9px] top-0 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-900 group-hover:scale-125 transition-transform" />
                     
-                    {/* Year Badge */}
                     <div className="inline-block px-3 py-1 bg-primary-500/20 text-primary-400 text-sm font-semibold rounded-full mb-2">
                       <Calendar className="w-3 h-3 inline mr-1" />
                       {item.year}
                     </div>
 
-                    {/* Role */}
                     <h4 className="text-xl font-bold text-white mb-2">{item.role}</h4>
 
-                    {/* Company */}
                     <p className="text-dark-200 font-medium mb-1">{item.company}</p>
 
-                    {/* Description (if any) */}
                     {item.description && (
                       <p className="text-dark-400 text-sm">{item.description}</p>
                     )}

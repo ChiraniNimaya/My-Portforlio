@@ -1,5 +1,3 @@
-// src/data/blogsData.js
-// Import blog images
 import violin from '../assets/violin.jpg'
 import watarun from '../assets/watarun.jpg'
 import zahir from '../assets/zahir.jpg'
@@ -15,7 +13,6 @@ export const blogsData = [
     date: "2024",
     readTime: "8 min read",
     featured: true,
-    // Full content for BlogDetail page
     content: [
       'On my twelfth birthday, my father handed me a violin. I had never expressed interest in music before, never hummed along to songs on the radio, never tapped rhythms on tabletops. But my father, in his quiet way, must have seen something I could not. The violin came in a worn black case with faded velvet lining, the wood smooth and amber-colored under the dim light of our living room. I remember feeling the weight of it in my hands, not understanding then that this instrument would become the most significant companion of my life.',
       'The first sounds I made were nothing short of terrible. I drew the bow across the strings and produced a screech that made my younger sister cover her ears and laugh. My neighbor, Mrs. Perera, who taught music at the local school, must have heard that catastrophic noise from across the fence because she appeared at our door the very next day. My mother had apparently mentioned to her that I hadd received a violin, and Mrs. Perera, with the kindness that would define our entire student-teacher relationship, offered to teach me. What began as casual lessons quickly became something sacred in our household—every Tuesday and Thursday evening, I would sit in her living room, my small fingers learning to navigate the fingerboard, my ear slowly developing the ability to distinguish between notes that all sounded equally wrong at first.',
@@ -73,9 +70,7 @@ export const blogsData = [
   }
 ]
 
-// Helper function to add new blogs easily
 export const addBlog = (newBlog) => {
-  // Validation
   const requiredFields = ['title', 'slug', 'excerpt', 'image', 'category', 'content']
   const missingFields = requiredFields.filter(field => !newBlog[field])
   
@@ -84,7 +79,6 @@ export const addBlog = (newBlog) => {
     return false
   }
 
-  // Add default values
   const blog = {
     featured: false,
     date: new Date().getFullYear().toString(),

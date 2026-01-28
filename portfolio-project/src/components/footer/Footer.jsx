@@ -26,7 +26,6 @@ const Footer = () => {
     <footer className="relative bg-dark-950 border-t border-dark-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 xl:px-20 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
           <div className="flex items-center gap-2 text-dark-300">
             <span>© {currentYear} Chirani Rajapaksha</span>
             <span className="hidden md:inline">•</span>
@@ -35,7 +34,6 @@ const Footer = () => {
             </span>
           </div>
 
-          {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => (
               <a
@@ -52,7 +50,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Additional Footer Text */}
         <div className="text-center mt-6 pt-6 border-t border-dark-800">
           <p className="text-dark-400 text-sm">
             Thanks for stopping by! Let's build something amazing together.
