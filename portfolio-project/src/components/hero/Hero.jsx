@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Download, ArrowRight } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
-import hero from '../../assets/hero.png'
+import hero from '../../assets/hero.jpg'
 
 const Hero = () => {
   const [ref, inView] = useInView({

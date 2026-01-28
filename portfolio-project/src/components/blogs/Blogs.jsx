@@ -51,12 +51,6 @@ const Blogs = () => {
                 <div className="absolute top-4 left-4 px-3 py-1 bg-primary-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                   {blog.category}
                 </div>
-
-                {blog.featured && (
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-dark-900/90 backdrop-blur-sm border border-primary-500 text-primary-400 text-xs font-semibold rounded-full">
-                    Featured
-                  </div>
-                )}
               </div>
 
               <div className="p-6">
