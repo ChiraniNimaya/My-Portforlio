@@ -98,7 +98,7 @@ const Navbar = () => {
 
       <div
         ref={menuRef}
-        className={`lg:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 bg-dark-900/95 backdrop-blur-xl border-l border-dark-800 shadow-2xl transform transition-transform duration-300 ${
+        className={`lg:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 bg-dark-900/95 backdrop-blur-xl border-l border-dark-800 shadow-2xl transform transition-transform duration-300 z-50 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -134,7 +134,7 @@ const Navbar = () => {
 
       {isMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 top-20 bg-black/60 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 top-20 bg-black/60 backdrop-blur-sm z-40"
           onClick={() => setIsMenuOpen(false)}
         />
       )}

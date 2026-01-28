@@ -29,9 +29,6 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-dark-300">
             <span>© {currentYear} Chirani Rajapaksha</span>
             <span className="hidden md:inline">•</span>
-            <span className="flex items-center gap-1">
-              Made with <Heart className="w-4 h-4 text-primary-500 fill-current animate-pulse" /> in Sri Lanka
-            </span>
           </div>
 
           <div className="flex items-center gap-4">
