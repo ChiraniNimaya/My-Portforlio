@@ -11,6 +11,7 @@ import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 import ProjectDetail from './components/projects/ProjectDetail'
 import BlogDetail from './components/blogs/BlogDetail'
+import AllBlogs from './components/blogs/AllBlogs'
 
 const ScrollRestoration = () => {
   const location = useLocation()
@@ -61,6 +62,7 @@ const App = () => {
           />
           <Route path="/projects/:projectName" element={<ProjectDetail />} /> 
           <Route path="/blogs/:slug" element={<BlogDetail />} />
+          <Route path="/all-blogs" element={<AllBlogs />} />
         </Routes>
       </div>
     </>

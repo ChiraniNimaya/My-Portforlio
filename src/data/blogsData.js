@@ -1,6 +1,7 @@
 import violin from '../assets/violin.jpg'
 import watarun from '../assets/watarun.jpg'
 import zahir from '../assets/zahir.jpg'
+import mango from '../assets/mango.jpg'
 
 export const blogsData = [
   {
@@ -10,9 +11,9 @@ export const blogsData = [
     excerpt: "On my twelfth birthday, my father handed me a violin. I had never expressed interest in music before, but something about that moment felt significant...",
     image: violin,
     category: "Personal Story",
-    date: "2024",
+    date: "2023",
     readTime: "8 min read",
-    featured: true,
+    showOnMainPage: false, 
     content: [
       'On my twelfth birthday, my father handed me a violin. I had never expressed interest in music before, never hummed along to songs on the radio, never tapped rhythms on tabletops. But my father, in his quiet way, must have seen something I could not. The violin came in a worn black case with faded velvet lining, the wood smooth and amber-colored under the dim light of our living room. I remember feeling the weight of it in my hands, not understanding then that this instrument would become the most significant companion of my life.',
       'The first sounds I made were nothing short of terrible. I drew the bow across the strings and produced a screech that made my younger sister cover her ears and laugh. My neighbor, Mrs. Perera, who taught music at the local school, must have heard that catastrophic noise from across the fence because she appeared at our door the very next day. My mother had apparently mentioned to her that I hadd received a violin, and Mrs. Perera, with the kindness that would define our entire student-teacher relationship, offered to teach me. What began as casual lessons quickly became something sacred in our household—every Tuesday and Thursday evening, I would sit in her living room, my small fingers learning to navigate the fingerboard, my ear slowly developing the ability to distinguish between notes that all sounded equally wrong at first.',
@@ -34,9 +35,9 @@ export const blogsData = [
     excerpt: "My last visit to Bangkok brought me to one of the most enchanting places I have ever experienced: Wat Arun, the Temple of Dawn...",
     image: watarun,
     category: "Travel",
-    date: "2024",
+    date: "2025",
     readTime: "6 min read",
-    featured: true,
+    showOnMainPage: true, 
     content: [
       'My last visit to Bangkok brought me to one of the most enchanting places I have ever experienced: Wat Arun, the Temple of Dawn. I arrived early in the morning when the sun was just beginning to paint the Chao Phraya River in shades of gold and pink, and immediately understood why this temple has captivated travelers for centuries.',
       'The temple rises dramatically from the riverbank like a jeweled crown, its main prang—a steep, ornate spire—piercing the Bangkok skyline. What makes Wat Arun truly mesmerizing is its intricate design. Every surface gleams with thousands of ceramic pieces and colorful tiles that catch the light like precious stones. The craftsmanship is breathtaking; up close, you can see the detailed mosaics that form intricate patterns across the structure. The central prang towers at about 80 meters, and as you walk through the temple grounds, you are surrounded by smaller prangs and pavilions, each equally stunning with their porcelain inlays and ornamental details.',
@@ -58,7 +59,7 @@ export const blogsData = [
     category: "Book Review",
     date: "2024",
     readTime: "7 min read",
-    featured: false,
+    showOnMainPage: true, 
     content: [
       'I came to Paulo Coelho`s The Zahir during a season of personal turbulence, searching for meaning in the aftermath of something I could not quite name. The book found me at precisely the right moment, or perhaps I found it. Either way, this novel became a mirror reflecting parts of myself I had been afraid to examine too closely. I approached it as someone who has always been prone to intensity, who loves deeply and attaches fiercely, and who has often mistaken obsession for devotion.',
       'The heart of The Zahir is this compelling paradox: the narrator becomes so consumed with understanding his wife Esther`s departure that he becomes imprisoned by her absence. Every thought spirals back to her. He reads about other obsessions, collects stories, becomes a scholar of his own pain. And somewhere in those pages, I recognized myself—the countless hours spent replaying moments, analyzing words, building entire narratives around a single person or loss. What struck me most profoundly was Coelho`s unflinching exploration of how obsession masquerades as love. The book challenged me to see that my fixation says far more about my own incompleteness than about love itself.',
@@ -67,44 +68,25 @@ export const blogsData = [
       'By the end, I realized The Zahir is not really about a marriage ending or a woman leaving. It is about the day we stop making someone else responsible for our happiness. It ia about the moment we accept that another person, no matter how loved, cannot fill the void inside us—nor should they be expected to. The narrator`s final freedom comes when he stops asking why Esther left and starts asking who he is when he is not defined by her absence.',
       'Weeks after finishing, certain truths from this book echo in my mind. Coelho writes with the precision of someone who has stared into the abyss of obsession and returned to tell the tale. This is not a comfortable book. It does not coddle. But it offers something more valuable than comfort: clarity. I am still extracting meaning from The Zahir, and every contemplation reveals new depths, new warnings, new wisdom. If you have ever loved too fiercely, held too tightly, or lost yourself in another person, this book will feel like a necessary conversation with an old friend who is not afraid to tell you the truth you need to hear.'
     ]
-  }
-]
-
-export const addBlog = (newBlog) => {
-  const requiredFields = ['title', 'slug', 'excerpt', 'image', 'category', 'content']
-  const missingFields = requiredFields.filter(field => !newBlog[field])
-  
-  if (missingFields.length > 0) {
-    console.error(`Missing required fields: ${missingFields.join(', ')}`)
-    return false
-  }
-
-  const blog = {
-    featured: false,
-    date: new Date().getFullYear().toString(),
-    readTime: "5 min read",
-    ...newBlog,
-    id: blogsData.length + 1
-  }
-
-  blogsData.push(blog)
-  return true
+  },
+  {
+  id: 4,
+  title: "My First Mango Sticky Rice: From Bangkok Streets to My Sri Lankan Kitchen",
+  slug: "mango-sticky-rice-experience",
+  excerpt: "My first taste of mango sticky rice in Bangkok was a moment of pure surprise and delight. What began as casual street food curiosity turned into a culinary memory I carried all the way back to Sri Lanka...",
+  image: mango,
+  category: "Cooking",
+  date: "2025",
+  readTime: "6 min read",
+  showOnMainPage: true,
+  content: [
+    "My first encounter with mango sticky rice happened on a warm evening in the lively streets of Bangkok. I had heard about this famous Thai dessert many times, but nothing prepared me for how magical that first bite would be. The balance of sweet coconut milk, soft glutinous rice, and perfectly ripe mango felt both comforting and exciting, familiar yet completely new. It was one of those food moments that instantly creates a memory — the kind you know you’ll want to revisit.",
+    "What impressed me most was the simplicity behind the complexity of flavors. The sticky rice was warm and gently sweet, soaked in rich coconut milk, while the mango brought a fresh, juicy brightness that cut through the creaminess. Each spoonful felt indulgent but not heavy, sweet but not overwhelming. Sitting there, surrounded by the hum of Bangkok, I realized that food can be a form of storytelling, and this dessert told a story of culture, tradition, and pure joy.",
+    "Naturally, once I returned home, I couldn’t stop thinking about that mango sticky rice. The craving followed me back to Sri Lanka, and I decided I had to try recreating it in my own kitchen. So I brought back essential ingredients like Thai glutinous rice and quality coconut milk, excited and slightly nervous about whether I could do justice to that unforgettable taste.",
+    "Back home, I paired those ingredients with what Sri Lanka does best — our incredible local mangoes. Choosing the perfect mango felt like a ritual in itself. I wanted one that was fragrant, golden, and naturally sweet. When I finally prepared my first batch, the kitchen filled with the comforting aroma of steaming rice and coconut, instantly transporting me back to those Bangkok streets.",
+    "The first bite of my homemade version was deeply satisfying. While it wasn’t identical to what I had in Thailand, it had its own special charm. The Sri Lankan mango added a richer sweetness and a slightly different texture, creating a beautiful fusion of Thai technique and local flavor. It reminded me that cooking is not about perfect replication, but about adaptation, creativity, and personal expression.",
+    "Since then, mango sticky rice has become one of my favorite desserts to make, especially when mango season arrives. It’s a dish that carries both nostalgia and comfort, reminding me of travel, discovery, and the joy of bringing distant experiences into my everyday life. Every time I prepare it, I relive that first magical taste in Bangkok, while also celebrating the beauty of Sri Lankan ingredients.",
+    "This experience taught me that some of the best recipes are born from memories, curiosity, and a little courage to experiment. Mango sticky rice will always be more than just a dessert for me — it’s a reminder of how food can connect places, cultures, and moments, turning simple ingredients into lasting stories."
+  ]
 }
-
-// Example of how to add a new blog:
-// import newBlogImage from '../assets/newblog.jpeg'
-// 
-// addBlog({
-//   title: "My New Blog Post",
-//   slug: "my-new-blog-post",
-//   excerpt: "A short description of the blog post...",
-//   image: newBlogImage,
-//   category: "Technology",
-//   featured: true,
-//   readTime: "10 min read",
-//   content: [
-//     "First paragraph of the blog post...",
-//     "Second paragraph...",
-//     "Third paragraph..."
-//   ]
-// })
+]

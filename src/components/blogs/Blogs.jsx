@@ -11,6 +11,9 @@ const Blogs = () => {
     triggerOnce: true
   })
 
+  // Get only featured blogs for the main page (limit to 3)
+  const featuredBlogs = blogsData.filter(blog => blog.showOnMainPage).slice(0, 3)
+
   return (
     <section 
       id="blogs" 
@@ -31,12 +34,12 @@ const Blogs = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogsData.map((blog, index) => (
+          {featuredBlogs.map((blog, index) => (
             <div
               key={blog.id}
               className={`group relative glass-effect rounded-2xl overflow-hidden transition-all duration-1000 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary-500/20 cursor-pointer ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } ${blog.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
+              }`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => navigate(`/blogs/${blog.slug}`)}
             >
@@ -81,6 +84,21 @@ const Blogs = () => {
             </div>
           ))}
         </div>
+
+        {/* Read More Blogs Button */}
+        {blogsData.length > 3 && (
+          <div className={`text-center mt-12 transition-all duration-1000 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`} style={{ transitionDelay: '400ms' }}>
+            <button
+              onClick={() => navigate('/all-blogs')}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
+            >
+              <span>Read More Blogs</span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
