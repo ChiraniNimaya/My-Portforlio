@@ -31,15 +31,17 @@ const Skills = () => {
       skills: [
         { name: "MySQL", level: 80, color: "from-blue-500 to-cyan-500" },
         { name: "Oracle", level: 75, color: "from-red-600 to-orange-600" },
+        { name: "PostgreSQL", level: 60, color: "from-teal-500 to-emerald-500" },
+        { name: "MongoDB", level: 50, color: "from-purple-500 to-indigo-500" }
       ]
     },
     {
       category: "Tools & Others",
       skills: [
         { name: "Git", level: 90, color: "from-orange-500 to-red-500" },
-        { name: "AWS", level: 40, color: "from-yellow-500 to-orange-500" },
         { name: "Kafka", level: 60, color: "from-purple-500 to-indigo-500" },
         { name: "Jira", level: 80, color: "from-blue-500 to-cyan-500" },
+        { name: "AWS", level: 40, color: "from-yellow-500 to-orange-500" },
       ]
     }
   ]

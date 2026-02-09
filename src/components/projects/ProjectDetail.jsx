@@ -39,6 +39,15 @@ const ProjectDetail = () => {
     navigate(-1) 
   }
 
+  // Get status badge color
+  const getStatusColor = (status) => {
+    const statusLower = status.toLowerCase()
+    if (statusLower === 'completed') return 'bg-green-500/20 text-green-400'
+    if (statusLower === 'in progress') return 'bg-yellow-500/20 text-yellow-400'
+    if (statusLower === 'planning') return 'bg-blue-500/20 text-blue-400'
+    return 'bg-gray-500/20 text-gray-400'
+  }
+
   return (
     <div className="min-h-screen bg-dark-950 relative">
       <div className="relative z-50 bg-dark-900 border-b border-dark-800">
@@ -143,18 +152,18 @@ const ProjectDetail = () => {
               <div className="flex justify-between items-center">
                 <span className="text-dark-300">Category</span>
                 <span className="text-white font-semibold">
-                  {project.id === 1 ? 'Machine Learning' : project.id === 2 ? 'Web Application' : 'Portfolio'}
+                  {project.category}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-dark-300">Status</span>
-                <span className="px-3 py-1 bg-green-500/20 text-green-400 text-sm font-semibold rounded-full">
-                  Completed
+                <span className={`px-3 py-1 text-sm font-semibold rounded-full ${getStatusColor(project.status)}`}>
+                  {project.status}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-dark-300">Year</span>
-                <span className="text-white font-semibold">2024</span>
+                <span className="text-white font-semibold">{project.year}</span>
               </div>
             </div>
           </div>
