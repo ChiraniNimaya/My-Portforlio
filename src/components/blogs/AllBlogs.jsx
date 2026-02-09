@@ -7,6 +7,7 @@ const AllBlogs = () => {
   const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState('All')
 
+  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -19,10 +20,10 @@ const AllBlogs = () => {
     ? blogsData 
     : blogsData.filter(blog => blog.category === selectedCategory)
 
-    const handleBackToHome = () => {
+  const handleBackToHome = () => {
     navigate('/')
     setTimeout(() => window.scrollTo(0, 0), 0)
-    }
+  }
 
   const handleBackToBlogs = () => {
     navigate('/')
@@ -32,42 +33,43 @@ const AllBlogs = () => {
         blogsSection.scrollIntoView({ behavior: 'smooth' })
       }
     }, 100)
-  }
+    }
 
   return (
     <div className="min-h-screen bg-dark-950 relative">
       {/* Header with Back Button */}
       <div className="relative z-50 bg-dark-900 border-b border-dark-800">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6">
           <button
             onClick={handleBackToHome}
-            className="group flex items-center gap-2 text-dark-300 hover:text-primary-400 transition-colors"
+            className="group flex items-center gap-2 text-dark-300 hover:text-primary-400 transition-colors text-sm md:text-base"
           >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:-translate-x-1" />
             <span className="font-medium">Back to Home</span>
           </button>
         </div>
       </div>
 
       {/* Page Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
         {/* Page Title */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-display mb-4">
             All <span className="gradient-text">Blogs</span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full mb-4" />
-          <p className="text-dark-300 text-lg max-w-2xl mx-auto">
+          <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full mb-4" />
+          <p className="text-dark-300 text-base md:text-lg max-w-2xl mx-auto px-4">
             Explore all my thoughts, stories, and insights
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 px-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
+              className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full font-medium transition-all text-sm md:text-base ${
                 selectedCategory === category
                   ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/50'
                   : 'bg-dark-800 text-dark-300 hover:text-white hover:bg-dark-700 border border-dark-700'
@@ -78,8 +80,9 @@ const AllBlogs = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs.map((blog) => (
+        {/* Blogs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredBlogs.map((blog, index) => (
             <div
               key={blog.id}
               className="group relative glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary-500/20 cursor-pointer border-2 border-dark-700 hover:border-primary-500/50"
@@ -135,18 +138,20 @@ const AllBlogs = () => {
           ))}
         </div>
 
+        {/* No blogs message */}
         {filteredBlogs.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-dark-300 text-lg">No blogs found in this category.</p>
+            <p className="text-dark-300 text-base md:text-lg">No blogs found in this category.</p>
           </div>
         )}
 
-        <div className="text-center mt-12">
+        {/* Back to Home Button */}
+        <div className="text-center mt-8 md:mt-12">
           <button
             onClick={handleBackToBlogs}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-105 text-sm md:text-base"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
             Back to Blogs
           </button>
         </div>

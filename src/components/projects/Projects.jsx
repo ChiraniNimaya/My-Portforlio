@@ -75,10 +75,10 @@ const Projects = () => {
           {showNavigation && showLeftArrow && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-110 flex items-center justify-center group"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-110 flex items-center justify-center group"
               aria-label="Scroll left"
             >
-              <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:-translate-x-0.5" />
             </button>
           )}
 
@@ -87,7 +87,7 @@ const Projects = () => {
             ref={scrollContainerRef}
             onScroll={checkScroll}
             className={`overflow-x-auto scrollbar-hide ${
-              showNavigation ? 'px-8' : ''
+              showNavigation ? 'px-6 md:px-8' : ''
             }`}
             style={{
               scrollbarWidth: 'none',
@@ -96,9 +96,9 @@ const Projects = () => {
           >
             <div className={`grid ${
               projectsData.length > 3 
-                ? 'grid-flow-col auto-cols-[minmax(300px,1fr)] md:auto-cols-[minmax(350px,1fr)]' 
+                ? 'grid-flow-col auto-cols-[minmax(280px,1fr)] md:auto-cols-[minmax(350px,1fr)]' 
                 : 'md:grid-cols-2 lg:grid-cols-3'
-            } gap-8`}>
+            } gap-6 md:gap-8`}>
               {projectsData.map((project, index) => (
                 <div
                   key={project.id}
@@ -151,10 +151,10 @@ const Projects = () => {
           {showNavigation && showRightArrow && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-110 flex items-center justify-center group"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all hover:scale-110 flex items-center justify-center group"
               aria-label="Scroll right"
             >
-              <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5" />
             </button>
           )}
         </div>
